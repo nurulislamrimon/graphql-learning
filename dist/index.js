@@ -11,30 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = require("@apollo/server");
 const standalone_1 = require("@apollo/server/standalone");
-const db_1 = require("./db");
-const typeDefs = ` 
-  type Book {
-    id:ID
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-    book(id:ID!):Book
-  }
-`;
-const resolvers = {
-    Query: {
-        books: () => db_1.books,
-        book: (parent, { id }, context) => {
-            return db_1.books.find((item) => item.id === id);
-        },
-    },
-};
+const schema_1 = require("./gql/schema");
+const resolvers_1 = require("./gql/resolvers");
 const server = new server_1.ApolloServer({
-    typeDefs,
-    resolvers,
+    typeDefs: schema_1.typeDefs,
+    resolvers: resolvers_1.resolvers,
 });
 const boostrap = () => __awaiter(void 0, void 0, void 0, function* () {
     const { url } = yield (0, standalone_1.startStandaloneServer)(server, {

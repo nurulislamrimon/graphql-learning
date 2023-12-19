@@ -6,6 +6,7 @@ exports.typeDefs = `
     id:ID
     title: String
     author: String
+    category:Category
   }
   type Category{
     id:ID

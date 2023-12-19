@@ -8,5 +8,9 @@ exports.resolvers = {
         book: (parent, { id }, context) => {
             return db_1.books.find((item) => item.id === id);
         },
+        categories: () => db_1.categories,
+        category: (parent, { id }, context) => {
+            return db_1.categories.find((category) => category.id === id);
+        },
     },
 };

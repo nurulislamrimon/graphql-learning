@@ -7,9 +7,15 @@ exports.typeDefs = `
     title: String
     author: String
   }
+  type Category{
+    id:ID
+    name:String
+  }
 
   type Query {
     books: [Book]
     book(id:ID!):Book
+    categories:[Category]
+    category(id:ID!):Category
   }
 `;

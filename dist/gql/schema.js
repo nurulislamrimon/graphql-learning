@@ -11,6 +11,7 @@ exports.typeDefs = `
   type Category{
     id:ID
     name:String
+    books:[Book]
   }
 
   type Query {

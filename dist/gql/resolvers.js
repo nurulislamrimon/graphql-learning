@@ -18,4 +18,9 @@ exports.resolvers = {
             return db_1.categories.find((category) => category.id === parent.category);
         },
     },
+    Category: {
+        books: (parent, args, context) => {
+            return db_1.books.filter((book) => book.category === parent.id);
+        },
+    },
 };
